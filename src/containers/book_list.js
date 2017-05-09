@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { selectBook } from '../actions/index.js';
+import { bindActionCreators } from 'redux';
 
 class BookList extends Component {
 
@@ -29,6 +30,10 @@ function mapStateToProps(state) {
   };
 }
 
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({ selectBook: selectBook }, dispatch);
+}
+
 // Connects to the store the container
-export default connect(mapStateToProps)(BookList);
+export default connect(mapStateToProps, mapDispatchToProps)(BookList);
 
